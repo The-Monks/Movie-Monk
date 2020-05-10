@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Monk</title>
+    <link rel="icon" type="image/png" href="static/logo.png"/>
     <style>
         #movies {
             font-family: Verdana, Geneva, sans-serif;
@@ -57,12 +58,24 @@
             margin-right: auto;
         }
     </style>
-    <h1 class="pageHeader">
+    <h1 align="center" class="pageHeader">
         Movie Monk
-    </h1>
-</head>
+        </h1>
+        </head>
 <body>
-<p>Based on the movie rating you gave,you may like the following movies released after year 2000:</p>
+
+{% if task==1 %}
+<h1 align="center" style="color: #4776E6">Similar movies like <strong style="color: forestgreen">{{ Title }}</strong>
+</h1>
+<p>You are gonna love these Movies!!</p>
+{% else %}
+<h1 align="center" style="color: #4776E6">Top Movies of the genre <strong style="color: forestgreen">{{ Title }}</strong> are
+</h1>
+<p>You are going to love these Movies!!</p>
+
+{% endif %}
+
+
 <table id=movies>
     <col id="column-one">
     <col id="column-two">
@@ -75,154 +88,27 @@
         <th>Movie</th>
         <th>Title</th>
         <th>Genre</th>
-        <th>Director</th>
-        <th>Country</th>
-        <th>Year</th>
-        <th>Minutes</th>
+        <th>Popularity</th>
+        <th>Vote Average</th>
+        <th>Release Date</th>
+        <th>Overview</th>
     </tr>
+
+    {% for d in allData %}
+
     <tr>
         <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMTU4OTQ3MDUyMV5BMl5BanBnXkFtZTgwOTA2MjU0MjE@._V1_SX300.jpg">
+                src= "{{ d['url'] }}" >
         </td>
-        <td>Whiplash</td>
-        <td>Drama, Music</td>
-        <td>Damien Chazelle</td>
-        <td>USA</td>
-        <td>2014</td>
-        <td>107</td>
+        <td>{{ d['title'] }}</td>
+        <td>{{  d['genres']}}</td>
+        <td>{{ d['popularity'] }}</td>
+        <td>{{ d['vote_average'] }}</td>
+        <td>{{ d['release_date'] }}</td>
+        <td >{{ d['overview'] }}</td>
     </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMTkxNzI3ODI4Nl5BMl5BanBnXkFtZTgwMjkwMjY4MjE@._V1_SX300.jpg">
-        </td>
-        <td>American Sniper</td>
-        <td>Action, Biography, Drama</td>
-        <td>Clint Eastwood</td>
-        <td>USA</td>
-        <td>2014</td>
-        <td>133</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_SX300.jpg">
-        </td>
-        <td>The Grand Budapest Hotel</td>
-        <td>Adventure, Comedy, Drama</td>
-        <td>Wes Anderson</td>
-        <td>USA, Germany, UK</td>
-        <td>2014</td>
-        <td>99</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg">
-        </td>
-        <td>Interstellar</td>
-        <td>Adventure, Drama, Sci-Fi</td>
-        <td>Christopher Nolan</td>
-        <td>USA, UK</td>
-        <td>2014</td>
-        <td>169</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_SX300.jpg">
-        </td>
-        <td>The Imitation Game</td>
-        <td>Biography, Drama, Thriller</td>
-        <td>Morten Tyldum</td>
-        <td>UK, USA</td>
-        <td>2014</td>
-        <td>114</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMjMxODYyODEzN15BMl5BanBnXkFtZTgwMDk4OTU0MzE@._V1_SX300.jpg">
-        </td>
-        <td>Cinderella</td>
-        <td>Drama, Family, Fantasy</td>
-        <td>Kenneth Branagh</td>
-        <td>USA, UK</td>
-        <td>2015</td>
-        <td>105</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BNTY2OTI5MjAyOV5BMl5BanBnXkFtZTgwNTkzMjQ0NDE@._V1_SX300.jpg">
-        </td>
-        <td>Crimson Peak</td>
-        <td>Drama, Fantasy, Horror</td>
-        <td>Guillermo del Toro</td>
-        <td>USA, Canada</td>
-        <td>2015</td>
-        <td>119</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_SX300.jpg">
-        </td>
-        <td>Gone Girl</td>
-        <td>Crime, Drama, Mystery</td>
-        <td>David Fincher</td>
-        <td>USA</td>
-        <td>2014</td>
-        <td>149</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BODAzNDMxMzAxOV5BMl5BanBnXkFtZTgwMDMxMjA4MjE@._V1_SX300.jpg">
-        </td>
-        <td>Birdman or (The Unexpected Virtue of Ignorance)</td>
-        <td>Comedy, Drama</td>
-        <td>Alejandro González Iñárritu</td>
-        <td>USA</td>
-        <td>2014</td>
-        <td>119</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMjA1Nzk0OTM2OF5BMl5BanBnXkFtZTgwNjU2NjEwMDE@._V1_SX300.jpg">
-        </td>
-        <td>Her</td>
-        <td>Drama, Romance, Sci-Fi</td>
-        <td>Spike Jonze</td>
-        <td>USA</td>
-        <td>2013</td>
-        <td>126</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMTAwMTU4MDA3NDNeQTJeQWpwZ15BbWU4MDk4NTMxNTIx._V1_SX300.jpg">
-        </td>
-        <td>The Theory of Everything</td>
-        <td>Biography, Drama, Romance</td>
-        <td>James Marsh</td>
-        <td>UK</td>
-        <td>2014</td>
-        <td>123</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMjA4NzkxNzc5Ml5BMl5BanBnXkFtZTgwNzQ3OTMxMTE@._V1_SX300.jpg">
-        </td>
-        <td>The Fault in Our Stars</td>
-        <td>Drama, Romance</td>
-        <td>Josh Boone</td>
-        <td>USA</td>
-        <td>2014</td>
-        <td>126</td>
-    </tr>
-    <tr>
-        <td><img
-                src="https://ia.media-imdb.com/images/M/MV5BMjA4NDg3NzYxMF5BMl5BanBnXkFtZTcwNTgyNzkyNw@@._V1_SX300.jpg">
-        </td>
-        <td>The Hunger Games</td>
-        <td>Adventure, Drama, Sci-Fi</td>
-        <td>Gary Ross</td>
-        <td>USA</td>
-        <td>2012</td>
-        <td>142</td>
-    </tr>
+      {% endfor %}
+
 </table>
 </body>
 </html>
