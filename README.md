@@ -1,4 +1,4 @@
 # Movie-Monk
 Movie Recommender WebApp
 
-![static/demo.mp4](demo video)
+!['Demo Video'](https://github.com/The-Monks/Movie-Monk/blob/master/static/demo.mp4)
